@@ -1,0 +1,134 @@
+@use "./reset";
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap");
+
+body {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   align-items: center;
+   justify-items: center;
+   font-family: "Rubik", sans-serif;
+   padding: 30vh 30vw 40vh;
+   background-color: #e1e2e3;
+   color: #e1e2e3;
+   font-weight: 400;
+}
+
+$blue: #687be2;
+$green: #00a652;
+$orange: #f25a29;
+$gray: #757aa1;
+
+button {
+   position: relative;
+   border: 0;
+   outline: 0;
+   padding: 1rem 2.5rem;
+   border-radius: 0.5rem;
+
+   &[data-status="pending"] {
+      // cursor: not-allowed;
+
+      .text {
+         transform: scale(0.5);
+         opacity: 0;
+         transition: 0.7s;
+      }
+
+      .dot {
+         opacity: 1;
+
+         i {
+            margin: 0.4rem;
+            display: inline-block;
+            height: 20%;
+            aspect-ratio: 1;
+            background: wheat;
+            border-radius: 50%;
+            animation-name: scale;
+            animation-iteration-count: infinite;
+            $duration: 1.2s;
+            animation-duration: $duration;
+
+            &:nth-child(1) {
+               animation-delay: 0s;
+            }
+
+            &:nth-child(2) {
+               animation-delay: ($duration/3) * 1;
+            }
+
+            &:nth-child(3) {
+               animation-delay: ($duration/3) * 2;
+            }
+         }
+      }
+   }
+
+   .text {
+      transform: scale(1);
+      opacity: 1;
+      transition: 0.1s;
+   }
+
+   .dot {
+      opacity: 0;
+      display: flex;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: 0.3s;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+   }
+}
+
+@keyframes scale {
+   0% {
+      transform: scale(1);
+   }
+   50% {
+      transform: scale(1.75);
+   }
+   100% {
+      transform: scale(1);
+   }
+}
+
+.-blue {
+   background-color: $blue;
+   box-shadow: 0;
+
+   &:hover {
+      box-shadow: 0 0 1.2rem 0.1rem $blue;
+   }
+}
+
+.-green {
+   background-color: $green;
+   box-shadow: 0;
+
+   &:hover {
+      box-shadow: 0 0 1.2rem 0.1rem $green;
+   }
+}
+
+.-orange {
+   background-color: $orange;
+   box-shadow: 0;
+
+   &:hover {
+      box-shadow: 0 0 1.2rem 0.1rem $orange;
+   }
+}
+
+.-gray {
+   background-color: $gray;
+   box-shadow: 0;
+
+   &:hover {
+      box-shadow: 0 0 1.2rem 0.1rem $gray;
+   }
+}
